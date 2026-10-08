@@ -1,0 +1,93 @@
+/* Gemensamma färger */
+:root {
+    --background: #f7f9f4;
+    --surface: #ffffff;
+    --text: #173b28;
+    --primary: #245c38;
+    --light-green: #eaf4e3;
+    --border: #dce6d6;
+}
+
+/* Grundinställningar */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Samma sidbredd på alla sidor */
+.container {
+    width: calc(100% - 32px);
+    max-width: 1052px;
+    margin: 0 auto;
+}
+
+/* Header */
+.site-header {
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 0;
+}
+
+.logo-link {
+    display: block;
+    width: 190px;
+    max-width: 100%;
+}
+
+/* Menylänkar */
+.nav-link {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 10px;
+    color: var(--primary);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link[aria-current="page"] {
+    background-color: var(--light-green);
+}
+
+/* Markering vid navigation med tangentbord */
+a:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 4px;
+}
+
+/* Anpassning för mobil */
+@media (max-width: 480px) {
+    .header-content {
+        padding: 12px 0;
+        gap: 12px;
+    }
+
+    .logo-link {
+        width: 140px;
+    }
+
+    .nav-link {
+        padding: 8px 12px;
+    }
+}
