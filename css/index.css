@@ -1,1 +1,169 @@
-/* Startsidespecifik design läggs här i nästa byggdel. */
+/* Välkomstsektion */
+.home-intro {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 48px;
+    padding: 72px 0;
+}
+
+/* Låt kolumnerna krympa på mindre skärmar */
+.intro-text,
+.intro-code {
+    min-width: 0;
+}
+
+.intro-label {
+    margin: 0 0 16px;
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.intro-text h1 {
+    margin: 0 0 24px;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.intro-text h1 span {
+    color: var(--primary);
+}
+
+.intro-description {
+    margin: 0 0 20px;
+    color: #45594b;
+    font-size: 1.1rem;
+}
+
+.intro-detail {
+    margin: 0;
+    color: #45594b;
+    font-size: 0.9rem;
+}
+
+.intro-button {
+    margin-top: 24px;
+}
+
+/* Pythonexemplet */
+.intro-code {
+    padding: 28px;
+    border-radius: 18px;
+    background-color: var(--text);
+    color: white;
+}
+
+.code-heading {
+    margin: 0;
+    color: #d1dfd4;
+    font-size: 0.85rem;
+}
+
+.intro-code pre {
+    margin: 28px 0;
+    overflow-x: auto;
+    font-size: 1rem;
+}
+
+.intro-code code,
+.code-result samp {
+    font-family: Consolas, "Courier New", monospace;
+}
+
+.intro-code code {
+    color: #d3eea5;
+}
+
+.code-result {
+    padding: 16px;
+    border-radius: 10px;
+    background-color: #274c35;
+}
+
+.code-result p {
+    margin: 0 0 8px;
+    color: #d1dfd4;
+    font-size: 0.75rem;
+}
+
+/* Sektion för lärmetoderna */
+.home-methods {
+    padding: 40px 0 64px;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 24px;
+}
+
+.home-methods h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.2;
+}
+
+.methods-description {
+    margin: 0 0 28px;
+    color: #45594b;
+}
+
+.methods-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* Startsidan: metodkort */
+.method-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background-color: var(--surface);
+}
+
+.method-label {
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.method-card h3 {
+    margin: 16px 0 12px;
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+
+.method-card p {
+    margin: 0 0 24px;
+    color: #45594b;
+}
+
+.method-card .button {
+    margin-top: auto;
+}
+
+/* Mobil och mindre surfplattor */
+@media (max-width: 760px) {
+    .home-intro {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 40px 0;
+    }
+
+    .intro-code {
+        padding: 20px;
+    }
+
+    .methods-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .method-card {
+        padding: 24px;
+    }
+}

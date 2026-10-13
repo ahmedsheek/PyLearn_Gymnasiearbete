@@ -91,3 +91,37 @@ a:focus-visible {
         padding: 8px 12px;
     }
 }
+
+/* Gemensamma knappar och länkar som ser ut som knappar */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    min-height: 44px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary);
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--text);
+}
+
+.button:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 4px;
+}
+
+.button:disabled {
+    background-color: var(--light-green);
+    color: #45594b;
+    cursor: not-allowed;
+}

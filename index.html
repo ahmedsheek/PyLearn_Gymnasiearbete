@@ -7,10 +7,10 @@
 
     <title>PyLearn – Lär dig Python</title>
 
-    <!-- Gemensam design laddas först -->
+    <!-- Gemensam design -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Design som bara gäller startsidan -->
+    <!-- Startsidespecifik design -->
     <link rel="stylesheet" href="css/index.css">
 </head>
 
@@ -30,7 +30,84 @@
     </header>
 
     <main class="container">
-        <!-- Här bygger David välkomstsektionen i nästa del. -->
+        <!-- Välkomstsektion -->
+        <section class="home-intro" aria-labelledby="intro-title">
+            <div class="intro-text">
+                <p class="intro-label">Välkommen till PyLearn</p>
+
+                <h1 id="intro-title">
+                    Din första rad <span>Python.</span>
+                </h1>
+
+                <p class="intro-description">
+                    Nyfiken på programmering? Lär dig grunderna i Python
+                    med korta förklaringar och interaktiva övningar.
+                    Du behöver inga förkunskaper.
+                </p>
+
+                <p class="intro-detail">
+                    Två sätt att lära sig. Samma grundläggande kunskap.
+                </p>
+
+                <a class="button intro-button" href="#learning-methods">
+                    Utforska lärmetoderna
+                </a>
+            </div>
+
+            <div class="intro-code">
+                <p class="code-heading">Så här kan Python se ut</p>
+
+                <pre><code>print("Hej, världen!")</code></pre>
+
+                <div class="code-result">
+                    <p>Utskrift</p>
+                    <samp>Hej, världen!</samp>
+                </div>
+            </div>
+        </section>
+
+        <!-- De två lärmetoderna -->
+        <section class="home-methods" id="learning-methods" aria-labelledby="methods-title">
+
+            <h2 id="methods-title">Hur vill du lära dig?</h2>
+
+            <p class="methods-description">
+                Utforska samma grunder i Python på två olika sätt.
+                Lektionerna är under utveckling.
+            </p>
+
+            <div class="methods-grid">
+                <article class="method-card">
+                    <span class="method-label">Läs och förstå</span>
+
+                    <h3>Textbaserat lärande</h3>
+
+                    <p>
+                        Läs korta förklaringar och följ tydliga
+                        kodexempel i din egen takt.
+                    </p>
+
+                    <button class="button" type="button" disabled>
+                        Textlektion kommer snart
+                    </button>
+                </article>
+
+                <article class="method-card">
+                    <span class="method-label">Skriv och prova</span>
+
+                    <h3>Interaktivt lärande</h3>
+
+                    <p>
+                        Skriv Pythonkod, kör den och se resultatet.
+                        Lär dig genom att lösa små uppgifter.
+                    </p>
+
+                    <button class="button" type="button" disabled>
+                        Övningar kommer snart
+                    </button>
+                </article>
+            </div>
+        </section>
     </main>
 </body>
 
