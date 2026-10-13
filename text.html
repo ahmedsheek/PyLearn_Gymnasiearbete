@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skriv ut text – PyLearn</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/text.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="logo-link" href="index.html">
+                <img src="assets/logo.png" alt="PyLearn – startsida">
+            </a>
+
+            <nav aria-label="Huvudmeny">
+                <a class="nav-link" href="index.html">
+                    Startsida
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="text-lesson" aria-labelledby="lesson-title">
+            <a class="back-link" href="index.html">
+                ← Till startsidan
+            </a>
+
+            <header class="lesson-heading">
+                <p class="lesson-label">Textbaserat lärande · Moment 1</p>
+
+                <h1 id="lesson-title">Skriv ut text med Python</h1>
+
+                <p class="lesson-introduction">
+                    I den här lektionen lär du dig att använda
+                    print() för att visa text på skärmen.
+                </p>
+            </header>
+
+            <section class="lesson-section" aria-labelledby="print-title">
+                <h2 id="print-title">Vad gör print()?</h2>
+
+                <p>
+                    Funktionen <code>print()</code> skriver ut ett värde.
+                    När du vill skriva ut text placerar du texten
+                    inom citattecken, mellan parenteserna.
+                </p>
+
+                <div class="lesson-example">
+                    <p class="example-label">Pythonkod</p>
+
+                    <pre><code>print("Hej, världen!")</code></pre>
+
+                    <div class="example-output">
+                        <p class="example-label">Utskrift</p>
+                        <samp>Hej, världen!</samp>
+                    </div>
+                </div>
+
+                <p>
+                    Citattecknen talar om för Python att innehållet är
+                    text. De visas inte i utskriften.
+                </p>
+            </section>
+
+            <section class="lesson-section" aria-labelledby="change-title">
+                <h2 id="change-title">Ändra texten</h2>
+
+                <p>
+                    Du bestämmer vad som ska skrivas ut genom att
+                    ändra texten mellan citattecknen.
+                </p>
+
+                <div class="lesson-example">
+                    <p class="example-label">Pythonkod</p>
+
+                    <pre><code>print("Jag lär mig Python!")</code></pre>
+
+                    <div class="example-output">
+                        <p class="example-label">Utskrift</p>
+                        <samp>Jag lär mig Python!</samp>
+                    </div>
+                </div>
+
+                <p>
+                    Funktionen är fortfarande <code>print()</code>.
+                    Det är bara texten som har ändrats.
+                </p>
+            </section>
+
+            <aside class="lesson-reminder" aria-labelledby="remember-title">
+                <h2 id="remember-title">Kom ihåg</h2>
+
+                <ul>
+                    <li>Skriv <code>print</code> med små bokstäver.</li>
+                    <li>Placera texten mellan parenteserna.</li>
+                    <li>Använd citattecken runt texten.</li>
+                    <li>Avsluta med ett citattecken och en högerparentes.</li>
+                </ul>
+            </aside>
+
+            <div class="lesson-actions">
+                <a class="button" href="index.html">
+                    Tillbaka till startsidan
+                </a>
+            </div>
+        </article>
+    </main>
+</body>
+
+</html>

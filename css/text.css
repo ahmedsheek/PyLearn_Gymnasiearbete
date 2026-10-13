@@ -1,0 +1,135 @@
+/* Textlektionens sidbredd och avstånd */
+.text-lesson {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 0 64px;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 8px 0;
+    color: var(--primary);
+    text-underline-offset: 4px;
+}
+
+/* Lektionens introduktion */
+.lesson-heading {
+    margin: 24px 0 36px;
+}
+
+.lesson-label {
+    margin: 0 0 12px;
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.lesson-heading h1 {
+    margin: 0 0 20px;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+}
+
+.lesson-introduction {
+    margin: 0;
+    color: #45594b;
+    font-size: 1.1rem;
+}
+
+/* Lektionens innehåll */
+.lesson-section {
+    margin-bottom: 36px;
+}
+
+.lesson-section h2,
+.lesson-reminder h2 {
+    margin: 0 0 16px;
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+
+.lesson-section p {
+    margin: 0 0 16px;
+}
+
+.text-lesson code,
+.text-lesson samp {
+    font-family: Consolas, "Courier New", monospace;
+}
+
+/* Kodexempel och utskrift */
+.lesson-example {
+    margin: 20px 0;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background-color: var(--surface);
+}
+
+.lesson-example .example-label {
+    margin: 0 0 10px;
+    color: #45594b;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.lesson-example pre {
+    margin: 0;
+    padding: 18px;
+    overflow-x: auto;
+    border-radius: 10px;
+    background-color: var(--text);
+    color: #d3eea5;
+    font-size: 1rem;
+}
+
+.example-output {
+    margin-top: 20px;
+}
+
+.example-output samp {
+    overflow-wrap: anywhere;
+}
+
+/* Sammanfattning */
+.lesson-reminder {
+    padding: 24px;
+    border-radius: 16px;
+    background-color: var(--light-green);
+}
+
+.lesson-reminder ul {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.lesson-reminder li + li {
+    margin-top: 8px;
+}
+
+.lesson-actions {
+    margin-top: 32px;
+}
+
+/* Mindre skärmar */
+@media (max-width: 600px) {
+    .text-lesson {
+        padding: 24px 0 40px;
+    }
+
+    .lesson-example,
+    .lesson-reminder {
+        padding: 18px;
+    }
+
+    .lesson-example pre {
+        padding: 14px;
+        font-size: 0.9rem;
+    }
+
+    .lesson-actions .button {
+        width: 100%;
+    }
+}
