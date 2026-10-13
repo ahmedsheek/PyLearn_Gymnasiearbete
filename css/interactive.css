@@ -1,0 +1,140 @@
+/* Sidans innehåll */
+.interactive-lesson {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px 0 64px;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 8px 0;
+    color: var(--primary);
+    text-underline-offset: 4px;
+}
+
+.lesson-heading {
+    margin: 24px 0 36px;
+}
+
+.lesson-label {
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.lesson-heading h1 {
+    margin: 0 0 24px;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.15;
+}
+
+.interactive-lesson code,
+.interactive-lesson samp {
+    font-family: Consolas, "Courier New", monospace;
+}
+
+.code-example {
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 12px;
+    background-color: var(--text);
+    color: #d3eea5;
+}
+
+/* Övningskort */
+.exercise {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background-color: var(--surface);
+}
+
+.exercise h2 {
+    margin: 0 0 12px;
+}
+
+#progress,
+.help-text,
+#python-status {
+    color: #45594b;
+    font-size: 0.9rem;
+}
+
+.exercise label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.exercise select,
+.exercise textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #849688;
+    border-radius: 10px;
+    background-color: white;
+    color: var(--text);
+    font: inherit;
+}
+
+.exercise textarea {
+    min-height: 160px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.exercise select:focus-visible,
+.exercise textarea:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.exercise-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.exercise-buttons [hidden] {
+    display: none;
+}
+
+/* Resultat och återkoppling */
+.output-box {
+    min-height: 80px;
+    padding: 18px;
+    border-radius: 10px;
+    background-color: var(--background);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+#feedback {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+#feedback[data-state="success"] {
+    color: #245c38;
+}
+
+#feedback[data-state="error"] {
+    color: #9b2929;
+}
+
+@media (max-width: 600px) {
+    .interactive-lesson {
+        padding: 24px 0 40px;
+    }
+
+    .exercise {
+        padding: 18px;
+    }
+
+    .exercise-buttons .button {
+        flex: 1 1 130px;
+    }
+}

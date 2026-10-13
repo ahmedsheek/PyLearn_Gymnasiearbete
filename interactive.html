@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<huvud>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=enhetsbredd, initial-skalning=1.0">
+
+<title>Prova Python – PyLearn</title>
+
+<länk rel="stylesheet" href="css/style.css">
+<länk rel="stylesheet" href="css/interactive.css">
+
+<script src="js/interactive.js" defer></script>
+</huvud>
+
+<kropp>
+<header class="webbplatshuvud">
+<div class="container header-content">
+<a class="logotyp-länk" href="index.html">
+<img src="assets/logo.png" alt="PyLearn – startsida">
+</a>
+
+<nav aria-label="Huvudmeny">
+<a class="nav-link" href="index.html">Startsida</a>
+</nav>
+</div>
+</rubrik>
+
+<main class="behållare">
+<article class="interaktiv-lektion" aria-labelledby="lektion-titel">
+<a class="back-link" href="index.html">← Till startsidan</a>
+
+<header class="lektion-rubrik">
+<p class="lesson-label">Interaktivt lärande · Moment 1</p>
+<h1 id="lesson-title">Skriv ut text med Python</h1>
+
+<p>
+Funktionen <code>print()</code> skriver ut ett värde.
+När du vill skriva ut text placerar du texten
+inom citattecken, mellan parenteserna.
+</p>
+
+<pre class="code-example"><code>print("Hej, världen!")</code></pre>
+
+<p>
+Koden skriver ut <samp>Hej, världen!</samp>.
+Citattecknen visa inte i utskriften.
+</p>
+
+<p>
+Du kan ändra texten, till exempel till
+<code>print("Jag lär mig Python!")</code>.
+</p>
+</rubrik>
+
+<section class="övning" aria-labelledby="övningstitel">
+<h2 id="exercise-title">Prova själv</h2>
+
+<p id="progress">0 av 2 uppgifter avklarade</p>
+
+<label for="task-select">Välj uppgift</label>
+<select id="uppgift-select">
+<option value="0">1. Skriv ut en hälsning</option>
+<option value="1">2. Ändra texten</option>
+</välj>
+
+<p id="uppgiftsbeskrivning"></p>
+
+<label for="code-input">Din Pythonkod</label>
+<textområde
+id="kodinmatning"
+rader="6"
+stavningskontroll="falskt"
+autoversalisera="av"
+autofullständig="av"
+autokorrigering="av"
+aria-describedby="kodhjälp"
+></textarea>
+
+<p id="kodhjälp" class="hjälptext">
+Skriv print med små bokstäver. Kom ihåg
+citat och parenteser.
+</p>
+
+<p id="python-status" roll="status">
+Laddar Python…
+</p>
+
+<div class="träningsknappar">
+<button id="run-button" class="button" type="button" inaktiverad>
+Körkod
+</knapp>
+
+<button id="stop-button" class="button" type="button" inaktiverad>
+Stoppa
+</knapp>
+
+<button id="återställningsknapp" class="knapp" type="knapp">
+Börja om
+</knapp>
+
+<button id="återförsök-knapp" class="knapp" type="knapp" dold>
+Försök ladda igen
+</knapp>
+</div>
+
+<h3>Utskrift</h3>
+<pre class="output-box"><samp id="output">Här visa din utskrift.</samp></pre>
+
+<p id="feedback" roll="status"></p>
+</avsnitt>
+
+<inget skript>
+Du behöver aktivera JavaScript för att köra övningarna.
+</noscript>
+</artikel>
+</main>
+</body>
+
+</html>
