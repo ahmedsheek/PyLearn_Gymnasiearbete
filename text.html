@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/text.css">
+
+    <script src="js/site.js" defer></script>
 </head>
 
 <body>
@@ -18,11 +20,43 @@
                 <img src="assets/logo.png" alt="PyLearn – startsida">
             </a>
 
-            <nav aria-label="Huvudmeny">
-                <a class="nav-link" href="index.html">
-                    Startsida
+            <nav class="site-nav" aria-label="Huvudmeny">
+                <a class="nav-link" href="index.html">Startsida</a>
+                <a class="nav-link" href="text.html" aria-current="page">
+                    Läs
                 </a>
+                <a class="nav-link" href="interactive.html">Öva</a>
             </nav>
+
+            <details class="profile-menu">
+                <summary>Min profil</summary>
+
+                <div class="profile-panel">
+                    <p class="profile-heading">Din plats i PyLearn</p>
+                    <p data-participant-name>Du övar som gäst.</p>
+
+                    <form id="participant-form">
+                        <label for="participant-name">Visningsnamn</label>
+
+                        <input id="participant-name" name="displayName" type="text" maxlength="30" autocomplete="off"
+                            aria-describedby="participant-help" placeholder="Vad vill du kallas?">
+
+                        <p id="participant-help" class="profile-help">
+                            Valfritt. Sparas tillfälligt i den här fliken.
+                        </p>
+
+                        <button class="button" type="submit">
+                            Spara namn
+                        </button>
+                    </form>
+
+                    <p id="participant-message" role="status"></p>
+
+                    <button class="profile-reset" type="button" data-new-participant>
+                        Ny deltagare
+                    </button>
+                </div>
+            </details>
         </div>
     </header>
 
@@ -39,7 +73,7 @@
 
                 <p class="lesson-introduction">
                     I den här lektionen lär du dig att använda
-                    print() för att visa text på skärmen.
+                    <code>print()</code> för att visa text på skärmen.
                 </p>
             </header>
 
@@ -101,7 +135,9 @@
                     <li>Skriv <code>print</code> med små bokstäver.</li>
                     <li>Placera texten mellan parenteserna.</li>
                     <li>Använd citattecken runt texten.</li>
-                    <li>Avsluta med ett citattecken och en högerparentes.</li>
+                    <li>
+                        Avsluta med ett citattecken och en högerparentes.
+                    </li>
                 </ul>
             </aside>
 
@@ -112,6 +148,20 @@
             </div>
         </article>
     </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <a class="footer-brand" href="index.html">
+                PyLearn<span>.</span>
+            </a>
+
+            <p>Små steg. Nya kunskaper.</p>
+
+            <p class="footer-credit">
+                Gymnasiearbete · Ahmed, David &amp; Khalid
+            </p>
+        </div>
+    </footer>
 </body>
 
 </html>

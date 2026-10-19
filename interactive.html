@@ -1,120 +1,205 @@
 <!DOCTYPE html>
 <html lang="sv">
 
-<huvud>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=enhetsbredd, initial-skalning=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prova Python – PyLearn</title>
+    <title>Prova Python – PyLearn</title>
 
-<länk rel="stylesheet" href="css/style.css">
-<länk rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/interactive.css">
 
-<script src="js/interactive.js" defer></script>
-</huvud>
+    <script src="js/site.js" defer></script>
+    <script src="js/interactive.js" defer></script>
+</head>
 
-<kropp>
-<header class="webbplatshuvud">
-<div class="container header-content">
-<a class="logotyp-länk" href="index.html">
-<img src="assets/logo.png" alt="PyLearn – startsida">
-</a>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="logo-link" href="index.html">
+                <img src="assets/logo.png" alt="PyLearn – startsida">
+            </a>
 
-<nav aria-label="Huvudmeny">
-<a class="nav-link" href="index.html">Startsida</a>
-</nav>
-</div>
-</rubrik>
+            <nav class="site-nav" aria-label="Huvudmeny">
+                <a class="nav-link" href="index.html">Startsida</a>
+                <a class="nav-link" href="text.html">Läs</a>
+                <a class="nav-link" href="interactive.html" aria-current="page">
+                    Öva
+                </a>
+            </nav>
 
-<main class="behållare">
-<article class="interaktiv-lektion" aria-labelledby="lektion-titel">
-<a class="back-link" href="index.html">← Till startsidan</a>
+            <details class="profile-menu">
+                <summary>Min profil</summary>
 
-<header class="lektion-rubrik">
-<p class="lesson-label">Interaktivt lärande · Moment 1</p>
-<h1 id="lesson-title">Skriv ut text med Python</h1>
+                <div class="profile-panel">
+                    <p class="profile-heading">Din plats i PyLearn</p>
+                    <p data-participant-name>Du övar som gäst.</p>
 
-<p>
-Funktionen <code>print()</code> skriver ut ett värde.
-När du vill skriva ut text placerar du texten
-inom citattecken, mellan parenteserna.
-</p>
+                    <form id="participant-form">
+                        <label for="participant-name">Visningsnamn</label>
 
-<pre class="code-example"><code>print("Hej, världen!")</code></pre>
+                        <input id="participant-name" name="displayName" type="text" maxlength="30" autocomplete="off"
+                            aria-describedby="participant-help" placeholder="Vad vill du kallas?">
 
-<p>
-Koden skriver ut <samp>Hej, världen!</samp>.
-Citattecknen visa inte i utskriften.
-</p>
+                        <p id="participant-help" class="profile-help">
+                            Valfritt. Sparas tillfälligt i den här fliken.
+                        </p>
 
-<p>
-Du kan ändra texten, till exempel till
-<code>print("Jag lär mig Python!")</code>.
-</p>
-</rubrik>
+                        <button class="button" type="submit">
+                            Spara namn
+                        </button>
+                    </form>
 
-<section class="övning" aria-labelledby="övningstitel">
-<h2 id="exercise-title">Prova själv</h2>
+                    <p id="participant-message" role="status"></p>
 
-<p id="progress">0 av 2 uppgifter avklarade</p>
+                    <button class="profile-reset" type="button" data-new-participant>
+                        Ny deltagare
+                    </button>
+                </div>
+            </details>
+        </div>
+    </header>
 
-<label for="task-select">Välj uppgift</label>
-<select id="uppgift-select">
-<option value="0">1. Skriv ut en hälsning</option>
-<option value="1">2. Ändra texten</option>
-</välj>
+    <main class="container">
+        <article class="interactive-lesson" aria-labelledby="lesson-title">
+            <a class="back-link" href="index.html">
+                ← Till startsidan
+            </a>
 
-<p id="uppgiftsbeskrivning"></p>
+            <header class="lesson-heading">
+                <p class="lesson-label">Interaktivt lärande · Moment 1</p>
 
-<label for="code-input">Din Pythonkod</label>
-<textområde
-id="kodinmatning"
-rader="6"
-stavningskontroll="falskt"
-autoversalisera="av"
-autofullständig="av"
-autokorrigering="av"
-aria-describedby="kodhjälp"
-></textarea>
+                <h1 id="lesson-title">Skriv ut text med Python</h1>
 
-<p id="kodhjälp" class="hjälptext">
-Skriv print med små bokstäver. Kom ihåg
-citat och parenteser.
-</p>
+                <p class="lesson-lead">
+                    Se hur det fungerar. Prova sedan själv.
+                </p>
+            </header>
 
-<p id="python-status" roll="status">
-Laddar Python…
-</p>
+            <section class="concept-card" aria-labelledby="concept-title">
+                <div class="concept-copy">
+                    <p class="concept-label">Så fungerar det</p>
 
-<div class="träningsknappar">
-<button id="run-button" class="button" type="button" inaktiverad>
-Körkod
-</knapp>
+                    <h2 id="concept-title">Låt koden säga något.</h2>
 
-<button id="stop-button" class="button" type="button" inaktiverad>
-Stoppa
-</knapp>
+                    <p>
+                        Funktionen <code>print()</code> skriver ut ett värde.
+                        När du vill skriva ut text placerar du texten
+                        inom citattecken, mellan parenteserna.
+                    </p>
+                </div>
 
-<button id="återställningsknapp" class="knapp" type="knapp">
-Börja om
-</knapp>
+                <div class="concept-demo">
+                    <div class="demo-code">
+                        <p class="demo-label">Pythonkod</p>
 
-<button id="återförsök-knapp" class="knapp" type="knapp" dold>
-Försök ladda igen
-</knapp>
-</div>
+                        <pre><code>print("Hej, världen!")</code></pre>
+                    </div>
 
-<h3>Utskrift</h3>
-<pre class="output-box"><samp id="output">Här visa din utskrift.</samp></pre>
+                    <div class="demo-output">
+                        <p class="demo-label">Utskrift</p>
+                        <samp>Hej, världen!</samp>
+                    </div>
+                </div>
 
-<p id="feedback" roll="status"></p>
-</avsnitt>
+                <p class="concept-note">
+                    <strong>Kom ihåg:</strong>
+                    Citattecknen visas inte i utskriften.
+                </p>
 
-<inget skript>
-Du behöver aktivera JavaScript för att köra övningarna.
-</noscript>
-</artikel>
-</main>
+                <div class="concept-change">
+                    <p>Du kan ändra texten, till exempel till:</p>
+
+                    <pre><code>print("Jag lär mig Python!")</code></pre>
+                </div>
+            </section>
+
+            <section class="exercise" aria-labelledby="exercise-title">
+                <div class="exercise-heading">
+                    <div>
+                        <p class="concept-label">Din tur</p>
+                        <h2 id="exercise-title">Prova själv</h2>
+                    </div>
+
+                    <p id="progress" role="status">
+                        0 av 2 uppgifter avklarade
+                    </p>
+                </div>
+
+                <label for="task-select">Välj uppgift</label>
+
+                <select id="task-select">
+                    <option value="0">1. Skriv ut en hälsning</option>
+                    <option value="1">2. Ändra texten</option>
+                </select>
+
+                <p id="task-description" tabindex="-1"></p>
+
+                <label for="code-input">Din Pythonkod</label>
+
+                <textarea id="code-input" rows="6" spellcheck="false" autocapitalize="off" autocomplete="off"
+                    aria-describedby="code-help"></textarea>
+
+                <p id="code-help" class="help-text">
+                    Skriv print med små bokstäver.
+                    Kom ihåg citattecken och parenteser.
+                </p>
+
+                <p id="python-status" role="status">
+                    Laddar Python…
+                </p>
+
+                <div class="exercise-buttons">
+                    <button id="run-button" class="button" type="button" disabled>
+                        Kör kod
+                    </button>
+
+                    <button id="stop-button" class="button button-secondary" type="button" disabled>
+                        Stoppa
+                    </button>
+
+                    <button id="reset-button" class="button button-secondary" type="button">
+                        Börja om
+                    </button>
+
+                    <button id="retry-button" class="button" type="button" hidden>
+                        Försök ladda igen
+                    </button>
+                </div>
+
+                <h3>Utskrift</h3>
+
+                <pre class="output-box"><samp id="output">Här visas din utskrift.</samp></pre>
+
+                <p id="feedback" role="status"></p>
+
+                <button id="next-button" class="button next-button" type="button" hidden>
+                    Gå vidare →
+                </button>
+            </section>
+
+            <noscript>
+                <p class="concept-note">
+                    Du behöver aktivera JavaScript för att köra övningarna.
+                </p>
+            </noscript>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <a class="footer-brand" href="index.html">
+                PyLearn<span>.</span>
+            </a>
+
+            <p>Små steg. Nya kunskaper.</p>
+
+            <p class="footer-credit">
+                Gymnasiearbete · Ahmed, David &amp; Khalid
+            </p>
+        </div>
+    </footer>
 </body>
 
 </html>

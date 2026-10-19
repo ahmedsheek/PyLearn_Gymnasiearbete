@@ -1,31 +1,47 @@
-/* Sidans innehåll */
+/* Sidbredd och avstånd */
 .interactive-lesson {
-    max-width: 800px;
+    max-width: 920px;
     margin: 0 auto;
-    padding: 32px 0 64px;
+    padding: 32px 0 48px;
 }
 
 .back-link {
     display: inline-block;
     padding: 8px 0;
     color: var(--primary);
+    font-size: 0.9rem;
     text-underline-offset: 4px;
 }
 
+/* Momentets introduktion */
 .lesson-heading {
-    margin: 24px 0 36px;
+    margin: 28px 0;
 }
 
 .lesson-label {
+    display: inline-block;
+    margin: 0 0 16px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: var(--surface);
     color: var(--primary);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
 .lesson-heading h1 {
-    margin: 0 0 24px;
+    max-width: 760px;
+    margin: 0 0 16px;
     font-size: clamp(2rem, 5vw, 3rem);
     line-height: 1.15;
+    letter-spacing: -0.035em;
+}
+
+.lesson-lead {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.1rem;
 }
 
 .interactive-lesson code,
@@ -33,108 +49,309 @@
     font-family: Consolas, "Courier New", monospace;
 }
 
-.code-example {
+/* Förklaring och kodexempel */
+.concept-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px 32px;
+    margin-bottom: 36px;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background-color: var(--surface);
+}
+
+.concept-card>* {
+    min-width: 0;
+}
+
+.concept-label {
+    margin: 0 0 10px;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.concept-copy h2 {
+    margin: 0 0 16px;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.concept-copy>p:last-child {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.concept-demo {
+    align-self: start;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.demo-code {
     padding: 20px;
-    overflow-x: auto;
-    border-radius: 12px;
     background-color: var(--text);
     color: #d3eea5;
 }
 
+.demo-label {
+    margin: 0 0 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.demo-code .demo-label {
+    color: #d1dfd4;
+}
+
+.demo-code pre,
+.concept-change pre {
+    margin: 0;
+    overflow-x: auto;
+    font-size: 0.95rem;
+}
+
+.demo-output {
+    padding: 20px;
+    background-color: var(--background);
+}
+
+.demo-output samp {
+    overflow-wrap: anywhere;
+}
+
+.concept-note {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 14px 18px;
+    border-left: 3px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    background-color: var(--light-green);
+    font-size: 0.9rem;
+}
+
+.concept-change {
+    grid-column: 1 / -1;
+}
+
+.concept-change p {
+    margin: 0 0 10px;
+    color: var(--muted);
+}
+
+.concept-change pre {
+    padding: 16px;
+    border-radius: 10px;
+    background-color: var(--background);
+}
+
 /* Övningskort */
 .exercise {
-    padding: 28px;
+    padding: 32px;
     border: 1px solid var(--border);
-    border-radius: 18px;
+    border-radius: 22px;
     background-color: var(--surface);
+    box-shadow: 0 8px 28px rgb(23 59 40 / 4%);
+}
+
+.exercise-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.exercise-heading>div {
+    min-width: 0;
 }
 
 .exercise h2 {
-    margin: 0 0 12px;
+    margin: 0;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
 }
 
-#progress,
-.help-text,
-#python-status {
-    color: #45594b;
-    font-size: 0.9rem;
+#progress {
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: var(--light-green);
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: bold;
 }
 
 .exercise label {
     display: block;
     margin-bottom: 8px;
+    font-size: 0.9rem;
     font-weight: bold;
 }
 
-.exercise select,
-.exercise textarea {
+.exercise select {
     width: 100%;
+    min-height: 48px;
     padding: 12px;
     border: 1px solid #849688;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--background);
     color: var(--text);
-    font: inherit;
 }
 
+#task-description {
+    margin: 24px 0;
+    padding: 18px 20px;
+    border-left: 3px solid var(--primary);
+    border-radius: 0 12px 12px 0;
+    background-color: var(--light-green);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* Kodfält */
 .exercise textarea {
-    min-height: 160px;
+    display: block;
+    width: 100%;
+    min-height: 190px;
+    padding: 22px;
+    border: 1px solid var(--text);
+    border-radius: 14px;
+    background-color: #142e23;
+    color: #e4f2d6;
+    caret-color: #d3eea5;
     font-family: Consolas, "Courier New", monospace;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.8;
+    tab-size: 4;
     resize: vertical;
 }
 
-.exercise select:focus-visible,
-.exercise textarea:focus-visible {
-    outline: 3px solid var(--primary);
-    outline-offset: 3px;
+.help-text {
+    margin: 12px 0;
+    color: var(--muted);
+    font-size: 0.85rem;
 }
 
+#python-status {
+    margin: 16px 0 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+/* Övningens knappar */
 .exercise-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin: 20px 0;
+    gap: 10px;
+    margin: 16px 0 28px;
 }
 
-.exercise-buttons [hidden] {
-    display: none;
+#run-button {
+    padding-inline: 26px;
 }
 
-/* Resultat och återkoppling */
-.output-box {
-    min-height: 80px;
-    padding: 18px;
-    border-radius: 10px;
+.exercise-buttons .button-secondary {
+    border-color: var(--border);
+    background-color: var(--surface);
+    color: var(--primary);
+}
+
+.exercise-buttons .button-secondary:hover {
+    background-color: var(--light-green);
+}
+
+.exercise-buttons .button-secondary:disabled {
     background-color: var(--background);
+    color: #647367;
+}
+
+/* Utskrift och återkoppling */
+.exercise h3 {
+    margin: 0 0 12px;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.output-box {
+    min-height: 90px;
+    margin: 0;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background-color: #f4f7f2;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
 
 #feedback {
-    margin-bottom: 0;
+    margin: 16px 0 0;
+    padding: 14px 18px;
+    border-radius: 10px;
     font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+#feedback:empty {
+    display: none;
 }
 
 #feedback[data-state="success"] {
-    color: #245c38;
+    background-color: var(--light-green);
+    color: var(--primary);
 }
 
 #feedback[data-state="error"] {
+    background-color: #fff0ec;
     color: #9b2929;
 }
 
-@media (max-width: 600px) {
+/* Mobil och mindre surfplattor */
+@media (max-width: 680px) {
     .interactive-lesson {
-        padding: 24px 0 40px;
+        padding: 24px 0 32px;
+    }
+
+    .concept-card {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+        padding: 20px;
     }
 
     .exercise {
-        padding: 18px;
+        padding: 20px;
     }
 
-    .exercise-buttons .button {
-        flex: 1 1 130px;
+    .exercise textarea {
+        padding: 16px;
     }
+}
+
+@media (max-width: 420px) {
+    .exercise-buttons .button {
+        flex: 1 1 120px;
+    }
+
+    #task-description {
+        padding: 16px;
+    }
+}
+
+/* Fortsätt efter en avklarad uppgift */
+.next-button {
+    margin-top: 16px;
+}
+
+#task-description {
+    scroll-margin-top: 24px;
 }

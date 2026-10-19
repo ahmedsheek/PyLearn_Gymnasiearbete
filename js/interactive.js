@@ -1,18 +1,22 @@
+"use strict";
+
+/* Uppgifternas instruktioner, startkod och förväntade utskrift */
 const tasks = [
     {
         description:
-            'Komplettera koden så att den skriver ut exakt: Hej, världen!',
+            "Komplettera koden så att den skriver ut exakt: Hej, världen!",
         starter: 'print("")',
         expected: "Hej, världen!"
     },
     {
         description:
-            'Ändra koden så att den skriver ut exakt: Jag lär mig Python!',
+            "Ändra koden så att den skriver ut exakt: Jag lär mig Python!",
         starter: 'print("Hej, världen!")',
         expected: "Jag lär mig Python!"
     }
 ];
 
+/* Kopplingar till HTML */
 const taskSelect = document.querySelector("#task-select");
 const taskDescription = document.querySelector("#task-description");
 const codeInput = document.querySelector("#code-input");
@@ -25,11 +29,14 @@ const runButton = document.querySelector("#run-button");
 const stopButton = document.querySelector("#stop-button");
 const resetButton = document.querySelector("#reset-button");
 const retryButton = document.querySelector("#retry-button");
+const nextButton = document.querySelector("#next-button");
 
+/* Uppgifternas tillstånd */
 let currentTask = 0;
-let completed = [false, false];
+let completed = tasks.map(() => false);
 let drafts = tasks.map(task => task.starter);
 
+/* Python körs i en separat worker */
 let worker = null;
 let ready = false;
 let running = false;
@@ -38,6 +45,9 @@ let timer = null;
 function showFeedback(message, state = "") {
     feedback.textContent = message;
     feedback.dataset.state = state;
+
+    nextButton.hidden =
+        state !== "success" || completed.every(Boolean);
 }
 
 function updateButtons() {
@@ -56,7 +66,9 @@ function showTask() {
 
 function updateProgress() {
     const count = completed.filter(Boolean).length;
-    progress.textContent = `${count} av 2 uppgifter avklarade`;
+
+    progress.textContent =
+        `${count} av ${tasks.length} uppgifter avklarade`;
 }
 
 function loadingFailed() {
@@ -77,7 +89,9 @@ function loadingFailed() {
     updateButtons();
 }
 
-function startPython(message = "Laddar Python… Första gången kan det ta en stund.") {
+function startPython(
+    message = "Laddar Python… Första gången kan det ta en stund."
+) {
     clearTimeout(timer);
 
     if (worker) {
@@ -88,6 +102,7 @@ function startPython(message = "Laddar Python… Första gången kan det ta en s
     ready = false;
     running = false;
     retryButton.hidden = true;
+
     statusText.textContent = message;
     updateButtons();
 
@@ -97,14 +112,14 @@ function startPython(message = "Laddar Python… Första gången kan det ta en s
         activeWorker = new Worker("js/python-worker.js", {
             type: "module"
         });
-    } catch (error) {
+    } catch {
         loadingFailed();
         return;
     }
 
     worker = activeWorker;
 
-    // Avbryt om laddningen inte blir klar.
+    // Avbryt om laddningen inte blir klar inom två minuter.
     timer = setTimeout(loadingFailed, 120000);
 
     activeWorker.onerror = () => {
@@ -114,7 +129,7 @@ function startPython(message = "Laddar Python… Första gången kan det ta en s
     };
 
     activeWorker.onmessage = event => {
-        // Ignorera svar från en gammal, stoppad worker.
+        // Ignorera svar från en tidigare, stoppad worker.
         if (worker !== activeWorker) {
             return;
         }
@@ -124,6 +139,7 @@ function startPython(message = "Laddar Python… Första gången kan det ta en s
         if (data.type === "ready") {
             clearTimeout(timer);
             ready = true;
+
             statusText.textContent = "Python är redo.";
             updateButtons();
             return;
@@ -140,6 +156,7 @@ function startPython(message = "Laddar Python… Första gången kan det ta en s
 
         clearTimeout(timer);
         running = false;
+
         statusText.textContent = "Python är redo.";
         updateButtons();
 
@@ -155,36 +172,42 @@ function startPython(message = "Laddar Python… Första gången kan det ta en s
             .replace(/\r\n/g, "\n")
             .replace(/\n$/, "");
 
-        if (actual === tasks[currentTask].expected) {
-            completed[currentTask] = true;
-            updateProgress();
-
-            const message = completed.every(Boolean)
-                ? "Rätt! Du har klarat båda uppgifterna."
-                : "Rätt! Välj uppgift 2 i listan för att fortsätta.";
-
-            showFeedback(message, "success");
-        } else {
+        if (actual !== tasks[currentTask].expected) {
             showFeedback(
                 "Koden kördes, men utskriften matchar inte uppgiften. Kontrollera text, mellanslag och skiljetecken.",
                 "error"
             );
+
+            return;
         }
+
+        completed[currentTask] = true;
+        updateProgress();
+
+        const nextTask = completed.findIndex(done => !done);
+
+        const message = nextTask === -1
+            ? "Rätt! Du har klarat båda uppgifterna."
+            : "Rätt! Uppgiften är klar. Fortsätt när du är redo.";
     };
 }
 
 function stopExecution(message) {
     startPython("Körningen stoppades. Laddar Python igen…");
+
     output.textContent = "Körningen avbröts.";
     showFeedback(message, "error");
 }
 
+/* Byt uppgift och behåll den skrivna koden under besöket */
 taskSelect.addEventListener("change", () => {
     drafts[currentTask] = codeInput.value;
     currentTask = Number(taskSelect.value);
+
     showTask();
 });
 
+/* Kör Pythonkoden */
 runButton.addEventListener("click", () => {
     if (!ready || running) {
         return;
@@ -197,15 +220,18 @@ runButton.addEventListener("click", () => {
 
     drafts[currentTask] = codeInput.value;
     running = true;
+
     updateButtons();
+    showFeedback("");
 
     output.textContent = "Kör koden…";
     statusText.textContent = "Python arbetar.";
-    showFeedback("");
 
-    // Uppgifterna är små: stoppa efter fem sekunder.
+    // Uppgifterna är små: stoppa körningen efter fem sekunder.
     timer = setTimeout(() => {
-        stopExecution("Koden tog för lång tid. Kontrollera den och försök igen.");
+        stopExecution(
+            "Koden tog för lång tid. Kontrollera den och försök igen."
+        );
     }, 5000);
 
     worker.postMessage({
@@ -213,28 +239,58 @@ runButton.addEventListener("click", () => {
     });
 });
 
+/* Stoppa pågående körning */
 stopButton.addEventListener("click", () => {
     stopExecution("Du stoppade körningen.");
 });
 
+/* Återställ samtliga uppgifter */
 resetButton.addEventListener("click", () => {
     if (running) {
         startPython();
     }
 
     currentTask = 0;
-    completed = [false, false];
+    completed = tasks.map(() => false);
     drafts = tasks.map(task => task.starter);
+
     taskSelect.value = "0";
 
     updateProgress();
     showTask();
 });
 
+/* Försök ladda Python igen */
 retryButton.addEventListener("click", () => {
     startPython();
 });
 
+/* Fortsätt till nästa olösta uppgift */
+nextButton.addEventListener("click", () => {
+    if (running) {
+        return;
+    }
+
+    const nextTask = completed.findIndex(done => !done);
+
+    if (nextTask === -1) {
+        return;
+    }
+
+    drafts[currentTask] = codeInput.value;
+    currentTask = nextTask;
+    taskSelect.value = String(currentTask);
+
+    showTask();
+
+    taskDescription.focus({ preventScroll: true });
+    taskDescription.scrollIntoView({
+        block: "start",
+        behavior: "instant"
+    });
+});
+
+/* Starta sidan */
 showTask();
 updateProgress();
 startPython();

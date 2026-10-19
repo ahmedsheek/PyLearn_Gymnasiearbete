@@ -7,11 +7,10 @@
 
     <title>PyLearn – Lär dig Python</title>
 
-    <!-- Gemensam design -->
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Startsidespecifik design -->
     <link rel="stylesheet" href="css/index.css">
+
+    <script src="js/site.js" defer></script>
 </head>
 
 <body>
@@ -21,16 +20,47 @@
                 <img src="assets/logo.png" alt="PyLearn – startsida">
             </a>
 
-            <nav aria-label="Huvudmeny">
+            <nav class="site-nav" aria-label="Huvudmeny">
                 <a class="nav-link" href="index.html" aria-current="page">
                     Startsida
                 </a>
+                <a class="nav-link" href="text.html">Läs</a>
+                <a class="nav-link" href="interactive.html">Öva</a>
             </nav>
+
+            <details class="profile-menu">
+                <summary>Min profil</summary>
+
+                <div class="profile-panel">
+                    <p class="profile-heading">Din plats i PyLearn</p>
+                    <p data-participant-name>Du övar som gäst.</p>
+
+                    <form id="participant-form">
+                        <label for="participant-name">Visningsnamn</label>
+
+                        <input id="participant-name" name="displayName" type="text" maxlength="30" autocomplete="off"
+                            aria-describedby="participant-help" placeholder="Vad vill du kallas?">
+
+                        <p id="participant-help" class="profile-help">
+                            Valfritt. Sparas tillfälligt i den här fliken.
+                        </p>
+
+                        <button class="button" type="submit">
+                            Spara namn
+                        </button>
+                    </form>
+
+                    <p id="participant-message" role="status"></p>
+
+                    <button class="profile-reset" type="button" data-new-participant>
+                        Ny deltagare
+                    </button>
+                </div>
+            </details>
         </div>
     </header>
 
     <main class="container">
-        <!-- Välkomstsektion -->
         <section class="home-intro" aria-labelledby="intro-title">
             <div class="intro-text">
                 <p class="intro-label">Välkommen till PyLearn</p>
@@ -66,14 +96,12 @@
             </div>
         </section>
 
-        <!-- De två lärmetoderna -->
         <section class="home-methods" id="learning-methods" aria-labelledby="methods-title">
-
             <h2 id="methods-title">Hur vill du lära dig?</h2>
 
             <p class="methods-description">
-                Utforska samma grunder i Python på två olika sätt.
-                Lektionerna är under utveckling.
+                Börja med att skriva ut text i Python.
+                Läs förklaringar eller prova att skriva koden själv.
             </p>
 
             <div class="methods-grid">
@@ -102,13 +130,27 @@
                         Lär dig genom att lösa små uppgifter.
                     </p>
 
-                    <a class="button" href="interactive.html"> 
+                    <a class="button" href="interactive.html">
                         Börja öva
                     </a>
                 </article>
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <a class="footer-brand" href="index.html">
+                PyLearn<span>.</span>
+            </a>
+
+            <p>Små steg. Nya kunskaper.</p>
+
+            <p class="footer-credit">
+                Gymnasiearbete · Ahmed, David &amp; Khalid
+            </p>
+        </div>
+    </footer>
 </body>
 
 </html>
